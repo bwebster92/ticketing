@@ -15,7 +15,7 @@ spec:
       containers:
         - name: expiration
           image: bwebster92/expiration
-          imagePullPolicy: Never
+          imagePullPolicy: ifNotPresent
           env:
             - name: NATS_CLUSTER_ID
               value: ticketing

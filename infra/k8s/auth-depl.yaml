@@ -15,7 +15,7 @@ spec:
       containers:
         - name: auth
           image: bwebster92/auth
-          imagePullPolicy: Never
+          imagePullPolicy: ifNotPresent
           env:
             - name: JWT_KEY
               valueFrom:

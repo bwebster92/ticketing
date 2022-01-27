@@ -15,7 +15,7 @@ spec:
       containers:
         - name: tickets
           image: bwebster92/tickets
-          imagePullPolicy: ifNotPresent
+          imagePullPolicy: IfNotPresent
           env:
             - name: JWT_KEY
               valueFrom:

@@ -15,7 +15,7 @@ spec:
       containers:
         - name: payments
           image: bwebster92/payments
-          imagePullPolicy: ifNotPresent
+          imagePullPolicy: IfNotPresent
           env:
             - name: JWT_KEY
               valueFrom:

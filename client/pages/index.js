@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import buildClient from '../api/build-client';
+import BaseLayout from '../components/base-layout';
 
 const LandingPage = ({ currentUser, tickets }) => {
   const ticketList = tickets.map((ticket) => {
@@ -16,26 +18,28 @@ const LandingPage = ({ currentUser, tickets }) => {
   });
 
   return (
-    <div>
-      <h1>Tickets</h1>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Link</th>
-          </tr>
-        </thead>
-        <tbody>{ticketList}</tbody>
-      </table>
-    </div>
+    <BaseLayout currentUser={currentUser}>
+      <div>
+        <h1>Tickets</h1>
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>{ticketList}</tbody>
+        </table>
+      </div>
+    </BaseLayout>
   );
 };
 
-LandingPage.getInitialProps = async (context, client, currentUser) => {
-  const { data } = await client.get('/api/tickets');
-
-  return { tickets: data };
+export const getServerSideProps = async (context) => {
+  const client = buildClient(context);
+  const { data } = await client.get('/api/users/currentuser');
+  return { props: { currentUser: data } };
 };
 
 export default LandingPage;

@@ -2,6 +2,8 @@ import Link from 'next/link';
 import buildClient from '../api/build-client';
 import BaseLayout from '../components/base-layout';
 
+// Comment to trigger rebuild
+
 const LandingPage = ({ currentUser, tickets }) => {
   const ticketList = tickets.map((ticket) => {
     return (
